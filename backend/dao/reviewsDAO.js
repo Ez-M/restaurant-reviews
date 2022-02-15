@@ -1,7 +1,8 @@
 import mongodb from "mongodb"
-const ObjectId = mongodb.ObjectID
+const ObjectId = mongodb.ObjectId
 
 let reviews
+
 export default class ReviewsDAO {
     static async injectDB(conn) {
         if (reviews) {
@@ -15,14 +16,14 @@ export default class ReviewsDAO {
     }
 
     static async addReview(restaurantId, user, review, date) {
-        try{
+        try {
             const reviewDoc = { name: user.name,
             user_id: user._id,
             date: date,
             text: review,
-            restaurant_id: ObjectId(restaurantId), }
+        restaurant_id: ObjectId(restaurantId), }
 
-            return await reviews.insertOne(reviewDoc)
+        return await reviews.insertOne(reviewDoc)
         } catch (e) {
             console.error(`Unable to post review: ${e}`)
             return {error: e}
@@ -56,5 +57,5 @@ export default class ReviewsDAO {
             return {error: e}
         }
     }
-    
+
 }
