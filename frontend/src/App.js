@@ -2,10 +2,10 @@ import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"; 
 
-import addReview from "./components/add-review";
-import login from "./components/login";
-import resaurantsList from "./components/restaurants-list";
-import restaurants from "./components/restaurants";
+import AddReview from "./components/add-review.js";
+import Login from "./components/login.js";
+import RestaurantsList from "./components/restaurants-list.js";
+import Restaurant from "./components/restaurants.js";
 
 function App() {
   const [user, setUser] = React.useState(null);
@@ -44,6 +44,30 @@ function App() {
           </li>
         </div>
       </nav>
+
+      <div className="container mt-3">
+        <Switch>
+          <Route exact path={["/", "/restaurants"]} component = {RestaurantsList} />
+          <Route 
+            path="/restaurants/:id/review"
+            render={(props) => (
+              <AddReview {...props} user={user} />
+            )}
+           />
+            <Route 
+              path="/restaurants/:id"
+              render={(props) => (
+                <Restaurant {...props} user={user}/>
+              )}
+            />
+            <Route 
+              path="/login"
+              render={(props) => (
+                <Login {...props} login={login} />
+              )}
+            />
+        </Switch>
+      </div>
     </div>
   );
 }

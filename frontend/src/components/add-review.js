@@ -1,6 +1,6 @@
 import React from "react";
 
-function addReview() {
+function AddReview() {
     return (
         <div className="App">
             Hello World. addReview
@@ -8,4 +8,4 @@ function addReview() {
     );
 }
 
-export default addReview;
+export default AddReview;
