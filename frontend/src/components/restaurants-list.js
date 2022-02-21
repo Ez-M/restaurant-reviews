@@ -103,6 +103,34 @@ const RestaurantsList = props => {
                         </button>
                 </div>
             </div>
+            <div className="input-group col-lg-4">
+                <input
+                type="text"
+                className="form-control"
+                placeholder="Search by zip"
+                value={searchZip}
+                onChange={onChangeSearchZip}
+                />
+                <div className="input-group-append">
+                    <button
+                    className="btn btn-outline-secondary"
+                    type="button"
+                    onClick={findByZip}
+                    >
+                        Search
+                    </button>
+                </div>
+            </div>
+            <div className="input-group col-lg-4">
+
+                <select onChange={onChangeSearchCuisine}>
+                    {cuisines.map(cuisine => {
+                        return (
+                            <option value={cuisine}> {cuisine.substr(0, 30)} </option>
+                        )
+                    })}
+                </select>
+            </div>
         </div>
     </div>
     );
