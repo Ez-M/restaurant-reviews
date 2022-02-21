@@ -82,7 +82,30 @@ const RestaurantsList = props => {
 
 
 
-    return ();
+    return (
+        <div>
+        <div className="row pb-1">
+            <div className="input-group col-lg-4">
+                <input
+                type="text"
+                className="form-control"
+                placeholder="Search by name"
+                value={searchName}
+                onChange={onChangeSearchName}
+                />
+                <div className="input-group-append">
+                    <button
+                        className="btn btn-outline-secondary"
+                        type="button"
+                        onClick={findByName}
+                        >
+                            Search
+                        </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    );
 
 }
 
