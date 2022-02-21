@@ -41,14 +41,49 @@ const RestaurantsList = props => {
             console.log(e);
         });
     };
-}
 
-function RestaurantsList() {
-    return (
-        <div className="App">
-            Hello World. resaurantsList
-        </div>
-    );
+    const retrieveCuisines = () => {
+        RestaurantDataService.getCuisines()
+        .then(response => {
+            console.log(response.data);
+            setCuisines(["All Cuisines"].concat(response.data));
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    };
+
+    const refreshList = () => {
+        retrieveRestaurants();
+    };
+
+    const find = (query, by) => {
+        RestaurantDataService.find(query, by)
+        .then(response => {
+            console.log(response.data);
+            setRestaurants(response.data.restaurants);
+        })
+        .catch(e =>{
+            console.log(e);
+        });
+    };
+
+    const findByName = () => {
+        find(searchName, "name")
+    };
+
+    const findByZip = () => {
+        find(searchZip, "zipcode")
+    };
+
+    const findByCuisine = () => {
+        find(searchCuisine, "cuisine")
+    };
+
+
+
+    return ();
+
 }
 
 export default RestaurantsList;
