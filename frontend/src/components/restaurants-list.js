@@ -157,7 +157,7 @@ const RestaurantsList = (props) => {
                                         </Link>
                                         <a
                                             target="_blank"
-                                            href={"https://www.google.com/maps/place" + address}
+                                            href={"https://www.google.com/maps/place/" + address}
                                             className="btn btn-primary col-lg-5 mx-1 mb-1"
                                         >
                                             View Map
